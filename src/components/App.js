@@ -1,4 +1,6 @@
 import  React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import NavBar from './NavBar';
 
 const App = () => {
     //     useEffect(async () => {
@@ -12,14 +14,16 @@ const App = () => {
     //     // return () => { }
     // }, [])
 
-console.log('testApp')
 
     return (
-        <>
+        <Router>
+
+            <NavBar></NavBar>
+
             <h1>
                 Hello World!
             </h1>
-        </>
+        </Router>
     );
 };
 
