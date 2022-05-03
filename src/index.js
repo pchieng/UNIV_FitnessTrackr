@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./components/App";
 
-var mountNode = document.getElementById("app");
-ReactDOM.render(<App name="Hello World" />, mountNode);
+ReactDOM.render(
+    <App></App>,
+    document.querySelector("#app")
+);
