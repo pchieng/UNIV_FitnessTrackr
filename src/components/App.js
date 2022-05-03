@@ -1,7 +1,7 @@
-import  React, { useEffect, useState } from "react";
+import  React, { useEffect, useState } from 'react';
 
 const App = () => {
-        // useEffect(async () => {
+    //     useEffect(async () => {
     //     console.log("IN HERE")
     //     const res = await fetch("https://fitnesstrac-kr.herokuapp.com/api/activities")
     //     // const res = await fetch("heroku-link");
@@ -12,13 +12,14 @@ const App = () => {
     //     // return () => { }
     // }, [])
 
+console.log('testApp')
 
     return (
-        <div>
+        <>
             <h1>
                 Hello World!
             </h1>
-        </div>
+        </>
     );
 };
 

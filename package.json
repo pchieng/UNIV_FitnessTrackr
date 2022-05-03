@@ -8,16 +8,8 @@
     "start:dev": "react-scripts start",
     "build": "react-scripts build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pchieng/UNIV_FitnessTrackr_FrontEnd.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pchieng/UNIV_FitnessTrackr_FrontEnd/issues"
-  },
-  "homepage": "https://github.com/pchieng/UNIV_FitnessTrackr_FrontEnd#readme",
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
