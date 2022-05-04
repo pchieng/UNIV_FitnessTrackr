@@ -1,4 +1,4 @@
-const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
+const baseURL = 'https://fitnesstrac-kr.herokuapp.com/';
 
 
  export const registerNewUser = async (userObject) => {
