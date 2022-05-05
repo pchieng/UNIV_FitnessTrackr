@@ -1,6 +1,8 @@
 import  React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import NavBar from './NavBar';
+import RegisterUser from './RegisterUser';
+import Login from './Login';
 
 const App = () => {
     //     useEffect(async () => {
@@ -17,7 +19,7 @@ const App = () => {
 
     return (
         <Router>
-
+            <Link to="/RegisterUser">Register</Link>
             <NavBar></NavBar>
 
             <h1>
