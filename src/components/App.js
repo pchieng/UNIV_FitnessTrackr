@@ -15,14 +15,21 @@ const App = () => {
         <>
 
         <Router>
+            <NavBar />
             <div>
-                <h1>FITNESS TRACKER</h1>
+                <Link to="/RegisterUser">Register </Link>
+                <Link to="/Login">Login    </Link>
             </div>
             
-
-            <h1>
-                Hello World!
-            </h1>
+            <Route path="/RegisterUser">
+                <RegisterUser />
+            </Route>
+            <Route path="/Login">   
+                <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            </Route>
+            <Route path="/Home">
+                <Home />
+            </Route>
         </Router>
         </>
     );
