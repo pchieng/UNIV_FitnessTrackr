@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Home from './Home';
 
 const NavBar = () => {
 
@@ -11,7 +10,7 @@ const NavBar = () => {
             </div>
             <div id="siteLinks">
 
-                <Link to = "/Home" className='navText'>HOME</Link>
+                <Link to = "/" className='navText'>HOME</Link>
 
                 <Link to = "/routines" className='navText'>ROUTINES</Link>
 
