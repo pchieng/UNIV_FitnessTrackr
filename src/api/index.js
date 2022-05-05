@@ -10,15 +10,11 @@ const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api';
         },
         body: JSON.stringify({
                 username: userObject.user,
-                password: userObject.password,
+                password: userObject.password
         }),
     });
-    console.log(response);
-
     const json = await response.json();
     console.log(json);
-
-    // localStorage.setItem('fitness_tracker_JWT', json.data.token)
     return json;
 }
 
@@ -30,18 +26,14 @@ export const loginUser = async (userObject) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            user: {
                 username: userObject.user,
-                password: userObject.password,
-            },
+                password: userObject.password
         }),
     });
 
-    console.log(response);
     const json = await response.json();
     console.log(json);
-
-    localStorage.setItem('fitness_tracker_JWT', json.data.token)
+    localStorage.setItem('fitness_tracker_JWT', json.token)
     return json;
 }
 
@@ -78,4 +70,19 @@ export const getRoutines = async () => {
         .catch(console.error);
 
         return response;
+  }
+
+  export const getRoutinesByActivity = async (activityId) => {
+      const url = `${baseURL}/activities/${activityId}/routines`;
+      const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(response => response.json())
+      .then(result => {
+          return result;
+      })
+      .catch(console.error);
+
+      return response;
   }
