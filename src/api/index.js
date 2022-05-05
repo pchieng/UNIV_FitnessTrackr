@@ -23,7 +23,7 @@ const baseURL = 'https://fitnesstrac-kr.herokuapp.com/';
     localStorage.setItem('fitness_tracker_JWT', json.data.token)
     return json;
 }
- }
+
 
 export const loginUser = async (userObject) => {
     const url = `${baseURL}/users/login`;
