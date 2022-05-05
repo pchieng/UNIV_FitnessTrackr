@@ -11,24 +11,14 @@ const NavBar = () => {
             </div>
             <div id="siteLinks">
 
-            <Link to = "/Home">
-                <a className='navText'>HOME</a>
-            </Link>
+                <Link to = "/Home" className='navText'>HOME</Link>
 
-            <Link to = '/routines'>
-                <a className='navText'>ROUTINES</a>
-            </Link>
+                <Link to = "/routines" className='navText'>ROUTINES</Link>
 
-            <Link to = '/myroutines'>
-                <a className='navText'>MY ROUTINES</a>
-            </Link>
+                <Link to = "/myroutines" className='navText'>MY ROUTINES</Link>
 
-            <Link to = '/activities'>
-                <a className='navText'>ACTIVITIES</a>
-            </Link>
-
-
-            </div>
+                <Link to = "/activities" className='navText'>ACTIVITIES</Link>
+         </ div>
 
 
 

@@ -26,7 +26,8 @@ const RegisterUser = () => {
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     }
-    
+ 
+
     return (
       <>
         <div>
@@ -35,11 +36,11 @@ const RegisterUser = () => {
 
         <form>
             <input type="text" placeholder="User Name" value={user} onChange={handleUserChange} />
-            <input type="password" placeholder="Password" id="password" value={password}
+            <input type="password" name="password" placeholder="Password" id="password" value={password}
              onChange={handlePasswordChange} />
 
-            <input type="password" placeholder="Re-Enter Password" id="confirm-password" value={password}
-             onChange={handlePasswordChange} />
+            <input type="password" name="confirm_password" placeholder="Re-Enter Password" id="confirm-password"
+            />
              
             <button onClick={handleRegisterClick}>Register!</button>  
         </form>
