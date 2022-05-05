@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { loginUser } from "./api";
+import { loginUser } from "../api";
 
 
 const Login = (props) => {
