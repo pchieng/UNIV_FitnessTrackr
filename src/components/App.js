@@ -5,6 +5,7 @@ import RegisterUser from './RegisterUser';
 import Login from './Login';
 import Home from './Home';
 import RoutinesList from './Routines';
+import RoutineForm from './RoutineForm';
 import ActivitiesList from './Activities';
 import ActivityForm from './ActivityForm';
 import { testAuthentication } from '../api';
@@ -37,7 +38,7 @@ console.log('LoggedIn',isLoggedIn)
         <>
 
             <Router>
-                <NavBar />
+                <NavBar isLoggedIn={isLoggedIn}/>
                 <div>
                     <Link to="/RegisterUser">Register </Link>
                     <Link to="/Login">Login    </Link>
@@ -61,7 +62,9 @@ console.log('LoggedIn',isLoggedIn)
                 <Route path="/createActivity">
                     <ActivityForm activities={activities} setActivities={setActivities} />
                 </Route>
-
+                <Route path="/createRoutine">
+                    <RoutineForm routines={routines} setRoutines={setRoutines} />
+                </Route>
 
             </Router>
         </>

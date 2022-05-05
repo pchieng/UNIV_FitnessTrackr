@@ -11,6 +11,8 @@ const RoutinesList = (props) => {
     }, [])
 
     return (
+        <div id="routinesPage">
+            <h1 id="routinesPageTitle">ROUTINES</h1>
         <div id='routinesList'>
             {routines.map(routine =>
                 <div className='routines' key={routine.id}>
@@ -31,6 +33,7 @@ const RoutinesList = (props) => {
                 </div>
             )}
         </div>
+ </div>
 
 
 

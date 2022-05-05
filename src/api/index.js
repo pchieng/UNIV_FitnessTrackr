@@ -48,6 +48,7 @@ export const testAuthentication = async (token) => {
     }).then(response => response.json())
         .then(result => {
             console.log(result);
+            return result;
         })
         .catch(console.error);
 
@@ -72,6 +73,34 @@ export const getRoutines = async () => {
 
     return response
 };
+
+
+export const createNewRoutine = async(newRoutine) => {
+
+    const url = `${baseURL}/routines`;
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(newRoutine)
+    })
+    const json = await response.json();
+    console.log(json)
+    if(json.error) {
+        alert(`${json.error}`)
+    } else {
+        alert(`Routine ${newRoutine.name} has been created`)
+        return json;
+    }
+}
+
+
+
+
+
+
 
 
 export const getActivities = async () => {
