@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { getUserData } from './api';
-
-const RoutinesList = () => {
+import { getRoutines } from "../api";
 
 
+const RoutinesList = (props) => {
+    const { routines, setRoutines } = props;
 
-    const [userData, setUserData] = useState([]);
-    useEffect(async () => setUserData(await getUserData()), []);
+    useEffect(async () => {
+        const routines = await getRoutines();
+        setRoutines(routines);
+    }, [])
 
     return (
-        <div>
-            {userData.map(routine =>
+        <div id='routinesList'>
+            {routines.map(routine =>
                 <div className='routines' key={routine.id}>
                     <h3>{`Routine: ${routine.name}`}</h3>
                     <p>{`Goal: ${routine.goal}`}</p>
                     <p>{`Creator: ${routine.creatorName}`}</p>
-                            
+                    <h4>Activities:</h4>
+                    {routine.activities.map(activity =>
+                        <div className='routine_activities' key={activity.id}>
+                            <p>{`Name: ${activity.name}`}</p>
+                            <p>{`Description: ${activity.description}`}</p>
+                            <p>{`Duration: ${activity.duration}`}</p>
+                            <p>{`Count: ${activity.count}`}</p>
+                         </div>   
                         
+                        )}
+
                 </div>
-
-
-
             )}
-
-
         </div>
 
 
@@ -32,3 +38,7 @@ const RoutinesList = () => {
 
 
 }
+
+
+
+export default RoutinesList;

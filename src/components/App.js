@@ -1,10 +1,14 @@
 import  React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import NavBar from './NavBar';
-import RegisterUser from './RegisterUser';
-import Login from './Login';
+// import RegisterUser from './RegisterUser';
+// import Login from './Login';
+import RoutinesList from './Routines';
 
 const App = () => {
+    const [routines, setRoutines] = useState([]);
+
+
     //     useEffect(async () => {
     //     console.log("IN HERE")
     //     const res = await fetch("https://fitnesstrac-kr.herokuapp.com/api/activities")
@@ -16,11 +20,13 @@ const App = () => {
     //     // return () => { }
     // }, [])
 
-
     return (
         <Router>
-            <Link to="/RegisterUser">Register</Link>
             <NavBar></NavBar>
+
+            <Route path="/routines">
+                <RoutinesList routines={routines} setRoutines={setRoutines} />
+            </Route>
 
             <h1>
                 Hello World!

@@ -19,9 +19,32 @@ body {
     text-decoration: none;
 }
 
-
 .navText {
     justify-content: space-around;
     padding-right: 20px;
     color: inherit;
+}
+
+#routinesList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    width: 50%;
+}
+
+.routines {
+    /* display: flex;
+    flex-direction: column; */
+    padding: 10px 5px;
+    width: 80%;
+    border-style: solid;
+    margin: 20px 0;
+}
+
+.routine_activities {
+    padding: 10px 5px;
+    width: 80%;
+    border-style: solid;
+    margin: 5px 10%;
 }
