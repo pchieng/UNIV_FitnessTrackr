@@ -54,7 +54,7 @@ console.log('LoggedIn',isLoggedIn)
                     <Home />
                 </Route>
                 <Route path="/routines">
-                    <RoutinesList routines={routines} setRoutines={setRoutines} />
+                    <RoutinesList isLoggedIn={isLoggedIn} routines={routines} setRoutines={setRoutines} />
                 </Route>
                 <Route path="/activities">
                     <ActivitiesList isLoggedIn={isLoggedIn} activities={activities} setActivities={setActivities} />
