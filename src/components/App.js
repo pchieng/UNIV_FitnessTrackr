@@ -6,12 +6,31 @@ import Login from './Login';
 import Home from './Home';
 import RoutinesList from './Routines';
 import ActivitiesList from './Activities';
+import ActivityForm from './ActivityForm';
+import { testAuthentication } from '../api';
 
 
 const App = () => {
     const [routines, setRoutines] = useState([]);
     const [activities, setActivities] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loggedInUsername, setLoggedInUsername] = useState('');
+
+async function isValidJWT() {
+    const token = localStorage.getItem('fitness_tracker_JWT');
+    if(!token) setIsLoggedIn(false);
+    else {
+        const isValid = await testAuthentication(token);
+        setLoggedInUsername(isValid.username);
+        setIsLoggedIn(true);
+    }
+}
+
+useEffect(() => {
+    isValidJWT();
+}, []);
+
+console.log('LoggedIn',isLoggedIn)
 
 
     return (
@@ -37,7 +56,10 @@ const App = () => {
                     <RoutinesList routines={routines} setRoutines={setRoutines} />
                 </Route>
                 <Route path="/activities">
-                    <ActivitiesList activities={activities} setActivities={setActivities} />
+                    <ActivitiesList isLoggedIn={isLoggedIn} activities={activities} setActivities={setActivities} />
+                </Route>
+                <Route path="/createActivity">
+                    <ActivityForm activities={activities} setActivities={setActivities} />
                 </Route>
 
 
