@@ -5,6 +5,7 @@ import RegisterUser from './RegisterUser';
 import Login from './Login';
 import Home from './Home';
 import RoutinesList from './Routines';
+import MyRoutinesList from './MyRoutines';
 import RoutineForm from './RoutineForm';
 import ActivitiesList from './Activities';
 import ActivityForm from './ActivityForm';
@@ -39,32 +40,43 @@ console.log('LoggedIn',isLoggedIn)
 
             <Router>
                 <NavBar isLoggedIn={isLoggedIn}/>
+
                 <div>
                     <Link to="/RegisterUser">Register </Link>
                     <Link to="/Login">Login    </Link>
                 </div>
+                <Route exact path="/">
+                    <Home />
+                </Route>
 
                 <Route path="/RegisterUser">
                     <RegisterUser />
                 </Route>
+
                 <Route path="/Login">
                     <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
                 </Route>
-                <Route exact path="/">
-                    <Home />
+
+                <Route path="/myRoutines">
+                    <MyRoutinesList loggedInUsername={loggedInUsername} routines={routines} setRoutines={setRoutines} />
                 </Route>
+
                 <Route path="/routines">
                     <RoutinesList isLoggedIn={isLoggedIn} routines={routines} setRoutines={setRoutines} />
                 </Route>
+
                 <Route path="/activities">
                     <ActivitiesList isLoggedIn={isLoggedIn} activities={activities} setActivities={setActivities} />
                 </Route>
+
                 <Route path="/createActivity">
                     <ActivityForm activities={activities} setActivities={setActivities} />
                 </Route>
+
                 <Route path="/createRoutine">
                     <RoutineForm routines={routines} setRoutines={setRoutines} />
                 </Route>
+
 
             </Router>
         </>
