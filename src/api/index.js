@@ -62,3 +62,20 @@ export const getRoutines = async () => {
   
     return response
   };
+
+
+  export const getActivities = async () => {
+      const url = `${baseURL}/activities`;
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(response => response.json())
+        .then(result => {
+            return result;
+        })
+        .catch(console.error);
+
+        return response;
+  }
