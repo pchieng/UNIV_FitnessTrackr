@@ -192,3 +192,27 @@ export const createNewActivity = async (newActivity) => {
         return json;
     }
 }
+
+export const addActivityToRoutine = async (routineId, activityToAdd) => {
+    const url = `${baseURL}/routines/${routineId}/activities`;
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(activityToAdd)
+    })
+    const json = await response.json();
+    console.log(json)
+    if(json.id) {
+        alert(`Activity has been added`)
+        return json;
+    } else {
+        alert(json.error)
+        return json;
+    }
+
+
+
+}

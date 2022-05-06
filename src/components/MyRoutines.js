@@ -15,6 +15,9 @@ const MyRoutinesList = (props) => {
         setMyRoutines(myRoutines);
     }, [])
 
+
+
+    
     return (
         <div id="myRoutinesPage">
             <h1 id="myRoutinesPageTitle">MY ROUTINES</h1>
