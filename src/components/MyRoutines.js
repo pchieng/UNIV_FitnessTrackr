@@ -27,6 +27,9 @@ const MyRoutinesList = (props) => {
                         <Link to={`/editRoutine/${routine.id}`}>
                             <button id='editButton'>Edit Routine</button>
                         </Link>
+                        <Link to={`/addActivity/${routine.id}`}>
+                            <button id='addActivityButton'>Add Activity</button>
+                        </Link>
 
                         <h3 id="routineName">{`Routine: ${routine.name}`}</h3>
 

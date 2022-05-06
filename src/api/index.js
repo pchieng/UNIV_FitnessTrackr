@@ -112,7 +112,6 @@ export const editRoutine = async(routineId, routineToEdit) => {
         body: JSON.stringify(routineToEdit)
     })
     const json = await response.json();
-    console.log(json);
     if(json.error) {
         alert(`${json.error}`)
     } else {
@@ -132,7 +131,6 @@ export const deleteRoutine = async(routineId) => {
         }
     })
     const json = await response.json();
-    console.log(json);
     if(json.success) {
         alert('Routine has been deleted')
         return json;

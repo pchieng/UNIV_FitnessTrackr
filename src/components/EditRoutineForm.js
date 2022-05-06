@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { editRoutine, deleteRoutine } from '../api';
+import { Link } from 'react-router-dom';
 
 const EditRoutine = (props) => {
     const { routines } = props;
@@ -23,7 +24,7 @@ const EditRoutine = (props) => {
     return (
 
         <div id="editRoutinePage">
-            <h1 id="editRoutinePageTitle">Edit Routine</h1>
+            <h1 id="editRoutinePageTitle">EDIT ROUTINE</h1>
             <form>
                 <label htmlFor='routineName'>Routine Name: </label>
                 <input
@@ -72,8 +73,11 @@ const EditRoutine = (props) => {
                 >
                 Submit Changes
             </button>
-   
             </span>
+            <br/>
+            <Link to='/myroutines'>
+            <button>Back</button>
+            </Link>
 
             <div id="routineToEdit">
                 <h3 id="routineName">{`Routine: ${routineToEdit.name}`}</h3>
