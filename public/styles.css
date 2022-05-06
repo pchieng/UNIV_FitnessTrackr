@@ -25,7 +25,12 @@ body {
     color: inherit;
 }
 
-#routinesList, #activitiesList {
+.welcomeUser {
+    font-size: 1.2rem;
+    margin-right: 30px;
+}
+
+#routinesList, #activitiesList, #editRoutinePage {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +38,7 @@ body {
     width: 70%;
 }
 
-.routines, .activities {
+.routines, .activities, #routineToEdit {
     padding: 10px 5px;
     width: 60%;
     border-style: solid;
@@ -53,7 +58,7 @@ body {
     text-align: center;
 }
 
-#activitiesPage, #routinesPage, #myRoutinesPage {
+#activitiesPage, #routinesPage, #myRoutinesPage, #editRoutinePage {
     text-align: center;
 }
 

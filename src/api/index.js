@@ -16,7 +16,7 @@ export const registerNewUser = async (userObject) => {
     const json = await response.json();
     console.log(json);
 
-    localStorage.setItem('fitness_tracker_JWT', json.data.token)
+    localStorage.setItem('fitness_tracker_JWT', json.token)
 
     return json;
 }
@@ -100,7 +100,27 @@ export const createNewRoutine = async(newRoutine) => {
 }
 
 
+export const editRoutine = async(routineId, routineToEdit) => {
+    
+    const url = `${baseURL}/routines/${routineId}`;
+    const response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(routineToEdit)
+    })
+    const json = await response.json();
+    console.log(json);
+    if(json.error) {
+        alert(`${json.error}`)
+    } else {
+        alert(`Routine has been updated`)
+        return json;
+    }
 
+}
 
 
 

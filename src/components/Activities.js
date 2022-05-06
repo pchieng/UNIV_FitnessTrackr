@@ -7,8 +7,6 @@ const ActivitiesList = (props) => {
     const { isLoggedIn, activities, setActivities } = props;
     useEffect(async () => setActivities(await getActivities()), []);
 
-    console.log('test',isLoggedIn)
-
     return (
         <div id="activitiesPage">
             <h1 id="activitiesPageTitle">ACTIVITIES</h1>

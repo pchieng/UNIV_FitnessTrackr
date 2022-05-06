@@ -24,14 +24,11 @@ const MyRoutinesList = (props) => {
             <div id='routinesList'>
                 {myRoutines.map(routine =>
                     <div className='routines' key={routine.id}>
-                        <h3 id="routineName">{`Routine: ${routine.name}`}
-                            <button 
-                                id='editButton'>
+                        <Link to={`/editRoutine/${routine.id}`}>
+                            <button id='editButton'>Edit Routine</button>
+                        </Link>
 
-                                Edit
-                            </button>
-
-                        </h3>
+                        <h3 id="routineName">{`Routine: ${routine.name}`}</h3>
 
                         <p>{`Goal: ${routine.goal}`}</p>
                         <p>{`Creator: ${routine.creatorName}`}</p>
