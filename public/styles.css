@@ -19,9 +19,40 @@ body {
     text-decoration: none;
 }
 
-
 .navText {
     justify-content: space-around;
     padding-right: 20px;
     color: inherit;
+}
+
+#routinesList, #activitiesList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+    width: 70%;
+}
+
+.routines, .activities {
+    padding: 10px 5px;
+    width: 60%;
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px gray;
+    margin: 20px 0;
+}
+
+.routine_activities {
+    padding: 10px 5px;
+    width: 80%;
+    border-style: solid;
+    margin: 5px 10%;
+}
+
+#activitiesPageTitle {
+    text-align: center;
+}
+
+#activitiesPage, #routinesPage, #myRoutinesPage {
+    text-align: center;
 }

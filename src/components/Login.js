@@ -8,7 +8,7 @@ const Login = (props) => {
   const {setIsLoggedIn} = props;
   
 
-  const handleLogin = () => {
+  const handleLogin = (event) => {
     event.preventDefault();
 
     console.log("Logging in...");
