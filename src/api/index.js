@@ -122,7 +122,25 @@ export const editRoutine = async(routineId, routineToEdit) => {
 
 }
 
+export const deleteRoutine = async(routineId) => {
+    const url = `${baseURL}/routines/${routineId}`;
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        }
+    })
+    const json = await response.json();
+    console.log(json);
+    if(json.success) {
+        alert('Routine has been deleted')
+        return json;
+    } else {
+        alert(`${json.error}`)
+    }
 
+}
 
 
 

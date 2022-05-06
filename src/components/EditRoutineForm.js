@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { editRoutine } from '../api';
+import { editRoutine, deleteRoutine } from '../api';
 
 const EditRoutine = (props) => {
     const { routines } = props;
@@ -20,8 +20,6 @@ const EditRoutine = (props) => {
         isPublic: routineIsPublic
     }
 
-
-    console.log(newRoutine)
     return (
 
         <div id="editRoutinePage">
@@ -45,7 +43,7 @@ const EditRoutine = (props) => {
                     onChange={(event) => setRoutineGoal(event.target.value)}
                 />
                 <br />
-                <label htmlFor='routineIsPublic'>Visible to Public: </label>
+                <label htmlFor='routineIsPublic'>Private: </label>
                 <input
                     type='checkbox'
                     id='routineIsPublic'
@@ -56,7 +54,13 @@ const EditRoutine = (props) => {
             </form>
             <br/>
             <span>
-            <button>
+            <button
+                onClick={async (event) => {
+                    event.preventDefault();
+                    const deletedRoutine = await deleteRoutine(routineId);
+                    console.log(deletedRoutine);
+                }}
+            >
                 Delete Routine
             </button>
             <button
