@@ -56,3 +56,7 @@ body {
 #activitiesPage, #routinesPage, #myRoutinesPage {
     text-align: center;
 }
+
+#editButton {
+    margin-left: 10px;
+}
