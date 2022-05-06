@@ -18,6 +18,17 @@ const RegisterUser = () => {
 
         setUser("");
         setPassword("");
+
+        let firstPassword = document.querySelector('.password').value,
+            confirmPassword = document.querySelector('.confirm_password').value;
+          
+            if (firstPassword == "") {
+                alert("Password field cannot be empty");
+            } else if (firstPassword != confirmPassword) {
+                alert("Passwords did not match, please try again!");
+                return false
+            }
+            
     };
 
     const handleUserChange = (event) => {
@@ -35,11 +46,11 @@ const RegisterUser = () => {
         </div>
 
         <form>
-            <input type="text" placeholder="User Name" value={user} onChange={handleUserChange} />
-            <input type="password" name="password" placeholder="Password" id="password" value={password}
-             onChange={handlePasswordChange} />
+            <input type="text" placeholder="User Name" value={user} onChange={handleUserChange}  />
+            <input type="password" className="password" placeholder="Password" id="password" value={password}
+             onChange={handlePasswordChange}/>
 
-            <input type="password" name="confirm_password" placeholder="Re-Enter Password" id="confirm-password"
+            <input type="password" className="confirm_password" placeholder="Re-Enter Password" id="confirm-password"
             />
              
             <button onClick={handleRegisterClick}>Register!</button>  
