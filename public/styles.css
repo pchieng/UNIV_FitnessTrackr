@@ -48,3 +48,11 @@ body {
     border-style: solid;
     margin: 5px 10%;
 }
+
+#activitiesPageTitle {
+    text-align: center;
+}
+
+#activitiesPage, #routinesPage, #myRoutinesPage {
+    text-align: center;
+}

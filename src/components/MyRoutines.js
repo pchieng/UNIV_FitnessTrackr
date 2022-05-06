@@ -1,21 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getRoutines } from "../api";
 import { Link } from 'react-router-dom';
 
 
-const RoutinesList = (props) => {
-    const { isLoggedIn, routines, setRoutines } = props;
+const MyRoutinesList = (props) => {
+    const { loggedInUsername, routines, setRoutines } = props;
+    const [myRoutines, setMyRoutines] = useState([]);
+
 
     useEffect(async () => {
         const routines = await getRoutines();
         setRoutines(routines);
+        const myRoutines = routines.filter(routine => routine.creatorName === loggedInUsername);
+        setMyRoutines(myRoutines);
     }, [])
 
+console.log(myRoutines);
+
+
+
     return (
-        <div id="routinesPage">
-            <h1 id="routinesPageTitle">ROUTINES</h1>
+        <div id="myRoutinesPage">
+            <h1 id="myRoutinesPageTitle">MY ROUTINES</h1>
+            <Link to='/createRoutine'>
+                <button id='newRoutineButton'>Create New Routine</button>
+            </Link>
             <div id='routinesList'>
-                {routines.map(routine =>
+                {myRoutines.map(routine =>
                     <div className='routines' key={routine.id}>
                         <h3>{`Routine: ${routine.name}`}</h3>
                         <p>{`Goal: ${routine.goal}`}</p>
@@ -45,4 +56,4 @@ const RoutinesList = (props) => {
 
 
 
-export default RoutinesList;
+export default MyRoutinesList;
