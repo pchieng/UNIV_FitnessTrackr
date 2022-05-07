@@ -15,6 +15,8 @@ const MyRoutinesList = (props) => {
         setMyRoutines(myRoutines);
     }, [])
 
+
+
 console.log(myRoutines);
 
 
@@ -38,14 +40,18 @@ console.log(myRoutines);
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>
                                 <p>{`Count: ${activity.count}`}</p>
+                                
                             </div>
+                            
 
                         )}
 
                     </div>
+                    
                 )}
             </div>
         </div>
+
 
 
 
