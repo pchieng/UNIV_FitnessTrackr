@@ -2,6 +2,7 @@ const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 
  export const registerNewUser = async (userObject) => {
+    const token = localStorage.getItem("fitness_tracker_JWT");
     const url = `${baseURL}/users/register`;
     const response = await fetch(url, {
         method: "POST",
@@ -24,6 +25,7 @@ const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 
 export const loginUser = async (userObject) => {
+    const token = localStorage.getItem("fitness_tracker_JWT");
     const url = `${baseURL}/users/login`;
     const response = await fetch (url, {
         method: "POST",
