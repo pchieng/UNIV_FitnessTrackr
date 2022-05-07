@@ -16,7 +16,7 @@ export const registerNewUser = async (userObject) => {
     const json = await response.json();
     console.log(json);
 
-    localStorage.setItem('fitness_tracker_JWT', json.data.token)
+    localStorage.setItem('fitness_tracker_JWT', json.token)
 
     return json;
 }
