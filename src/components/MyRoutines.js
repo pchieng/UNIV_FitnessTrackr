@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getRoutines } from "../api";
+import { getRoutines, getRoutinesByUser } from "../api";
 import { Link } from 'react-router-dom';
 
 
@@ -9,10 +9,8 @@ const MyRoutinesList = (props) => {
 
 
     useEffect(async () => {
-        const routines = await getRoutines();
-        setRoutines(routines);
-        const myRoutines = routines.filter(routine => routine.creatorName === loggedInUsername);
-        setMyRoutines(myRoutines);
+        const routines = await getRoutinesByUser();
+        setMyRoutines(routines);
     }, [])
 
 
@@ -42,6 +40,10 @@ const MyRoutinesList = (props) => {
 
                         {routine.activities.map(activity =>
                             <div className='routine_activities' key={activity.id}>
+                                <Link to={`/editActivity/${routine.id}/${activity.id}`}>
+                                    <button id='editActivityButton'>Edit Activity</button>
+                                </Link>
+                                <button id='removeActivityButton'>Remove Activity</button>
                                 <p>{`Name: ${activity.name}`}</p>
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>

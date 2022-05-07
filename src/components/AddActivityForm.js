@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getActivities, addActivityToRoutine } from '../api';
+import { Link } from 'react-router-dom';
 
 
 const AddActivity = (props) => {
@@ -40,7 +41,7 @@ const AddActivity = (props) => {
                     name="activityListSelection"
                     onChange={(event) => setSelectedActivityId(event.target.value)}
                 >
-                    <option hidden disabled selected value> -- Select an activity -- </option>
+                    <option disabled selected> -- Select an activity -- </option>
                 </select>
                 <br />
                 <label htmlFor="activityCount">Count: </label>
@@ -61,6 +62,10 @@ const AddActivity = (props) => {
                     onChange={(event) => setActivityDuration(event.target.value)}
                 />
                 <br />
+                <Link to='/myRoutines'>
+                    <button>Back</button>
+                </Link>
+
                 <button
                     onClick={(event) => {
                         event.preventDefault();
