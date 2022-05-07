@@ -5,7 +5,7 @@ const RegisterUser = () => {
     const [user, setUser] = useState("");
     const [password, setPassword]= useState("");
 
-    const handleRegisterClick = () => {
+    const handleRegisterClick = async (event) => {
         event.preventDefault();
 
         console.log("Creating a new user...");
@@ -14,21 +14,25 @@ const RegisterUser = () => {
             password: password
         };
 
-        registerNewUser(registerInfo);
-
-        setUser("");
-        setPassword("");
-
         let firstPassword = document.querySelector('.password').value,
             confirmPassword = document.querySelector('.confirm_password').value;
           
             if (firstPassword == "") {
                 alert("Password field cannot be empty");
-            } else if (firstPassword != confirmPassword) {
+                return false;
+            } 
+            
+            if (firstPassword != confirmPassword) {
                 alert("Passwords did not match, please try again!");
                 return false
             }
-            
+
+            const newUser = await registerNewUser(registerInfo);
+            alert(newUser.message)
+
+            setUser("");
+            setPassword("");
+            document.querySelector('.confirm_password').value='';
     };
 
     const handleUserChange = (event) => {

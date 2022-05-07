@@ -16,7 +16,7 @@ export const registerNewUser = async (userObject) => {
     const json = await response.json();
     console.log(json);
 
-    localStorage.setItem('fitness_tracker_JWT', json.data.token)
+    localStorage.setItem('fitness_tracker_JWT', json.token)
 
     return json;
 }
@@ -100,9 +100,45 @@ export const createNewRoutine = async(newRoutine) => {
 }
 
 
+export const editRoutine = async(routineId, routineToEdit) => {
+    
+    const url = `${baseURL}/routines/${routineId}`;
+    const response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(routineToEdit)
+    })
+    const json = await response.json();
+    if(json.error) {
+        alert(`${json.error}`)
+    } else {
+        alert(`Routine has been updated`)
+        return json;
+    }
 
+}
 
+export const deleteRoutine = async(routineId) => {
+    const url = `${baseURL}/routines/${routineId}`;
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        }
+    })
+    const json = await response.json();
+    if(json.success) {
+        alert('Routine has been deleted')
+        return json;
+    } else {
+        alert(`${json.error}`)
+    }
 
+}
 
 
 
@@ -155,4 +191,28 @@ export const createNewActivity = async (newActivity) => {
         alert(`Activity ${newActivity.name} has been created`)
         return json;
     }
+}
+
+export const addActivityToRoutine = async (routineId, activityToAdd) => {
+    const url = `${baseURL}/routines/${routineId}/activities`;
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(activityToAdd)
+    })
+    const json = await response.json();
+    console.log(json)
+    if(json.id) {
+        alert(`Activity has been added`)
+        return json;
+    } else {
+        alert(json.error)
+        return json;
+    }
+
+
+
 }
