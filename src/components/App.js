@@ -6,9 +6,11 @@ import Login from './Login';
 import Home from './Home';
 import RoutinesList from './Routines';
 import MyRoutinesList from './MyRoutines';
+import EditRoutine from './EditRoutineForm';
 import RoutineForm from './RoutineForm';
 import ActivitiesList from './Activities';
 import ActivityForm from './ActivityForm';
+import AddActivity from './AddActivityForm';
 import { testAuthentication } from '../api';
 
 
@@ -32,14 +34,12 @@ useEffect(() => {
     isValidJWT();
 }, []);
 
-console.log('LoggedIn',isLoggedIn)
-
 
     return (
         <>
 
             <Router>
-                <NavBar isLoggedIn={isLoggedIn}/>
+                <NavBar isLoggedIn={isLoggedIn} loggedInUsername={loggedInUsername}/>
 
                 <div>
                     <Link to="/RegisterUser">Register </Link>
@@ -76,6 +76,15 @@ console.log('LoggedIn',isLoggedIn)
                 <Route path="/createRoutine">
                     <RoutineForm routines={routines} setRoutines={setRoutines} />
                 </Route>
+
+                <Route path="/editRoutine">
+                    <EditRoutine routines={routines} setRoutines={setRoutines} />
+                </Route>
+
+                <Route path="/addActivity">
+                    <AddActivity activities={activities} setActivities={setActivities}/>
+                </Route>
+                
 
 
             </Router>

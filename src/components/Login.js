@@ -9,8 +9,6 @@ const Login = (props) => {
   
 
   const handleLogin = (event) => {
-    event.preventDefault();
-
     console.log("Logging in...");
     const registerInfo = {
       user: user,
