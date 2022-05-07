@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Home from './Home';
 
-const NavBar = () => {
+const NavBar = (props) => {
+    const { isLoggedIn } = props;
 
     return (
         <div id="navBar">
@@ -11,14 +11,20 @@ const NavBar = () => {
             </div>
             <div id="siteLinks">
 
-                <Link to = "/Home" className='navText'>HOME</Link>
+                <Link to="/" className='navText'>HOME</Link>
 
-                <Link to = "/routines" className='navText'>ROUTINES</Link>
+                {isLoggedIn ?
+                    <Link to="/myroutines" className='navText'>
+                        MY ROUTINES
+                    </Link>
+                    :
+                    null
+                }
 
-                <Link to = "/myroutines" className='navText'>MY ROUTINES</Link>
+                <Link to="/routines" className='navText'>ROUTINES</Link>
 
-                <Link to = "/activities" className='navText'>ACTIVITIES</Link>
-         </ div>
+                <Link to="/activities" className='navText'>ACTIVITIES</Link>
+            </ div>
 
 
 
