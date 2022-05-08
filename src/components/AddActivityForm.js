@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { getActivities, addActivityToRoutine } from '../api';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 const AddActivity = (props) => {
+
     const { activities, setActivities } = props;
-    const routineId = parseInt(location.pathname.slice(13));
+    let { routineId } = useParams();
+    routineId = parseInt(routineId);
     const [activityCount, setActivityCount] = useState(null);
     const [activityDuration, setActivityDuration] = useState(null);
     const [selectedActivityId, setSelectedActivityId] = useState(null);
@@ -18,17 +20,6 @@ const AddActivity = (props) => {
         duration: activityDuration
     }
 
-    useEffect(async () => setActivities(await getActivities()), []);
-
-    for (let i = 0; i < activities.length; i++) {
-        const activityName = activities[i].name;
-        const activityId = activities[i].id;
-        let option = document.createElement("option");
-        option.text = activityName;
-        option.value = activityId;
-        option.id = activityId;
-        activityListSelection.add(option);
-    }
 
     return (
 
@@ -42,6 +33,11 @@ const AddActivity = (props) => {
                     onChange={(event) => setSelectedActivityId(event.target.value)}
                 >
                     <option disabled selected> -- Select an activity -- </option>
+                    {activities.map(activity => {
+                        return (
+                            <option id={`${activity.id}`} value={`${activity.id}`}>{`${activity.name}`}</option>
+                        )
+                    })}
                 </select>
                 <br />
                 <label htmlFor="activityCount">Count: </label>

@@ -229,6 +229,25 @@ export const addActivityToRoutine = async (routineId, activityToAdd) => {
         alert(json.error)
         return json;
     }
+}
+
+export const editRoutineActivity = async (routineActivityId, routineActivityToEdit) => {
+    const url = `${baseURL}/routine_activities/${routineActivityId}`;
+    const response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(routineActivityToEdit)
+    })
+    const json = await response.json();
+    if (json.error) {
+        alert(`${json.error}`)
+    } else {
+        alert(`Routine activity has been updated`)
+        return json;
+    }
 
 
 

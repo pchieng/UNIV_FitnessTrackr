@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { getRoutines, getRoutinesByUser } from "../api";
+import { getActivities, getRoutines, getRoutinesByUser } from "../api";
 import { Link } from 'react-router-dom';
 
 
 const MyRoutinesList = (props) => {
-    const { loggedInUsername, routines, setRoutines } = props;
+    const { loggedInUsername, routines, setRoutines, setActivities } = props;
     const [myRoutines, setMyRoutines] = useState([]);
 
 
     useEffect(async () => {
-        const routines = await getRoutinesByUser();
-        setMyRoutines(routines);
+        const activities = await getActivities();
+        setActivities(activities);
+        const routines = await getRoutines();
+        setRoutines(routines);
+        const myRoutines = await getRoutinesByUser();
+        setMyRoutines(myRoutines);
     }, [])
 
 

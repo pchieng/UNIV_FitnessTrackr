@@ -59,7 +59,7 @@ useEffect(() => {
                 </Route>
 
                 <Route path="/myRoutines">
-                    <MyRoutinesList loggedInUsername={loggedInUsername} routines={routines} setRoutines={setRoutines} />
+                    <MyRoutinesList loggedInUsername={loggedInUsername} routines={routines} setRoutines={setRoutines} setActivities={setActivities}/>
                 </Route>
 
                 <Route path="/routines">
@@ -82,12 +82,12 @@ useEffect(() => {
                     <EditRoutine routines={routines} setRoutines={setRoutines} />
                 </Route>
 
-                <Route path="/addActivity">
+                <Route path="/addActivity/:routineId">
                     <AddActivity activities={activities} setActivities={setActivities}/>
                 </Route>
 
                 <Route path="/editActivity/:routineId/:activityId">
-                    <EditActivity activities={activities} setActivities={setActivities} />
+                    <EditActivity activities={activities} setActivities={setActivities} routines={routines} setRoutines={setRoutines}/>
                 </Route>
                 
 
