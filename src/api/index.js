@@ -1,4 +1,4 @@
-const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api';
+export const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 
 export const registerNewUser = async (userObject) => {
@@ -22,6 +22,7 @@ export const registerNewUser = async (userObject) => {
 }
 
 export const loginUser = async (userObject) => {
+    const token = localStorage.getItem("fitness_tracker_JWT");
     const url = `${baseURL}/users/login`;
     const response = await fetch(url, {
         method: "POST",
@@ -250,5 +251,44 @@ export const editRoutineActivity = async (routineActivityId, routineActivityToEd
     }
 
 
+}
+
+export const editActivity = async(activityId, activityToEdit) => {
+    
+    const url = `${baseURL}/activities/${activityId}`;
+    const response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(activityToEdit)
+    })
+    const json = await response.json();
+    if(json.error) {
+        alert(`${json.error}`)
+    } else {
+        alert(`Routine has been updated`)
+        return json;
+    }
+
+}
+
+export const deleteActivity = async(activityId) => {
+    const url = `${baseURL}/activities/${activityId}`;
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        }
+    })
+    const json = await response.json();
+    if(json.success) {
+        alert(' Activity has been deleted')
+        return json;
+    } else {
+        alert(`${json.error}`)
+    }
 
 }

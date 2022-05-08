@@ -17,6 +17,14 @@ const MyRoutinesList = (props) => {
         setMyRoutines(myRoutines);
     }, [])
 
+    async function handleDeleteActivity(id) {
+        const activities = await getActivities();
+        setActivities(activities);
+        const newActivity = activities.filter(activity => activity.id !== id);
+    }
+
+console.log(myRoutines);
+
 
 
     
@@ -35,6 +43,7 @@ const MyRoutinesList = (props) => {
                         <Link to={`/addActivity/${routine.id}`}>
                             <button id='addActivityButton'>Add Activity</button>
                         </Link>
+                        
 
                         <h3 id="routineName">{`Routine: ${routine.name}`}</h3>
 
@@ -52,14 +61,23 @@ const MyRoutinesList = (props) => {
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>
                                 <p>{`Count: ${activity.count}`}</p>
+                                <Link to={`editActivities/${activity.id}`}>
+                                     <button id='editActivityButton'>Edit Activity</button>
+                                </Link>
+                                <button type='button' className='deletebtn'
+                                    onClick={() => handleDeleteActivity(activity.id)}>Remove Activity</button>
+                                
                             </div>
+                            
 
                         )}
 
                     </div>
+                    
                 )}
             </div>
         </div>
+
 
 
 
