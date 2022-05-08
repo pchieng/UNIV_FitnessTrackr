@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { getRoutines, getActivities } from "../api";
+import { getActivities, getRoutines, getRoutinesByUser } from "../api";
 import { Link } from 'react-router-dom';
 
 
 const MyRoutinesList = (props) => {
-    const { loggedInUsername, routines, setRoutines } = props;
+    const { loggedInUsername, routines, setRoutines, setActivities } = props;
     const [myRoutines, setMyRoutines] = useState([]);
-    const [activities, setActivities] = useState([]);
 
 
     useEffect(async () => {
+        const activities = await getActivities();
+        setActivities(activities);
         const routines = await getRoutines();
         setRoutines(routines);
-        const myRoutines = routines.filter(routine => routine.creatorName === loggedInUsername);
+        const myRoutines = await getRoutinesByUser();
         setMyRoutines(myRoutines);
     }, [])
 
@@ -52,6 +53,10 @@ console.log(myRoutines);
 
                         {routine.activities.map(activity =>
                             <div className='routine_activities' key={activity.id}>
+                                <Link to={`/editActivity/${routine.id}/${activity.id}`}>
+                                    <button id='editActivityButton'>Edit Activity</button>
+                                </Link>
+                                <button id='removeActivityButton'>Remove Activity</button>
                                 <p>{`Name: ${activity.name}`}</p>
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>

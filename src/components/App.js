@@ -7,12 +7,12 @@ import Home from './Home';
 import RoutinesList from './Routines';
 import MyRoutinesList from './MyRoutines';
 import EditRoutine from './EditRoutineForm';
-import EditActivity from './EditActivityForm';
 import RoutineForm from './RoutineForm';
 import ActivitiesList from './Activities';
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivityForm';
-import { testAuthentication } from '../api';
+import { getRoutines, getActivities, testAuthentication } from '../api';
+import EditActivity from './EditActivityForm';
 
 
 const App = () => {
@@ -59,7 +59,7 @@ useEffect(() => {
                 </Route>
 
                 <Route path="/myRoutines">
-                    <MyRoutinesList loggedInUsername={loggedInUsername} routines={routines} setRoutines={setRoutines} />
+                    <MyRoutinesList loggedInUsername={loggedInUsername} routines={routines} setRoutines={setRoutines} setActivities={setActivities}/>
                 </Route>
 
                 <Route path="/routines">
@@ -78,16 +78,16 @@ useEffect(() => {
                     <RoutineForm routines={routines} setRoutines={setRoutines} />
                 </Route>
 
-                <Route path="/editRoutine">
+                <Route path="/editRoutine/:routineId">
                     <EditRoutine routines={routines} setRoutines={setRoutines} />
                 </Route>
 
-                <Route path="/addActivity">
+                <Route path="/addActivity/:routineId">
                     <AddActivity activities={activities} setActivities={setActivities}/>
                 </Route>
 
-                <Route path="/editActivities">
-                    <EditActivity activities={activities} setActivities={setActivities}/>
+                <Route path="/editActivity/:routineId/:activityId">
+                    <EditActivity activities={activities} setActivities={setActivities} routines={routines} setRoutines={setRoutines}/>
                 </Route>
                 
 
