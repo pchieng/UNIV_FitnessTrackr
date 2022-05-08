@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import RegisterUser from './RegisterUser';
 import Login from './Login';
@@ -12,6 +12,7 @@ import ActivitiesList from './Activities';
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivityForm';
 import { testAuthentication } from '../api';
+import EditActivity from './EditActivityForm';
 
 
 const App = () => {
@@ -58,11 +59,11 @@ useEffect(() => {
                 </Route>
 
                 <Route path="/myRoutines">
-                    <MyRoutinesList loggedInUsername={loggedInUsername} routines={routines} setRoutines={setRoutines} />
+                    <MyRoutinesList setRoutines={setRoutines} setActivities={setActivities}/>
                 </Route>
 
                 <Route path="/routines">
-                    <RoutinesList isLoggedIn={isLoggedIn} routines={routines} setRoutines={setRoutines} />
+                    <RoutinesList routines={routines} setRoutines={setRoutines} setActivities={setActivities} />
                 </Route>
 
                 <Route path="/activities">
@@ -77,12 +78,16 @@ useEffect(() => {
                     <RoutineForm routines={routines} setRoutines={setRoutines} />
                 </Route>
 
-                <Route path="/editRoutine">
+                <Route path="/editRoutine/:routineId">
                     <EditRoutine routines={routines} setRoutines={setRoutines} />
                 </Route>
 
-                <Route path="/addActivity">
+                <Route path="/addActivity/:routineId">
                     <AddActivity activities={activities} setActivities={setActivities}/>
+                </Route>
+
+                <Route path="/editActivity/:routineId/:activityId">
+                    <EditActivity routines={routines} />
                 </Route>
                 
 

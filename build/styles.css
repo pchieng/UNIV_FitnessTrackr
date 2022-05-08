@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-body {
-    margin: 0;
-}
-
-#navBar {
-    background-color: #11475f;
-    color:aliceblue;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 2rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 10px 5px;
-}
-
-#navBar a {
-    color: inherit;
-    font-size: 1.5rem;
-    text-decoration: none;
-}
-
-
-.navText {
-    justify-content: space-around;
-    padding-right: 20px;
-    color: inherit;
-=======
 body {
     margin: 0;
 }
@@ -92,5 +64,4 @@ body {
 
 #editButton {
     margin-left: 10px;
->>>>>>> 1d36a284f6db311bad3f1f34e6bbb65e40062d0b
 }

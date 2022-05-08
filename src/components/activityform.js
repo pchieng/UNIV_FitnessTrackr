@@ -6,8 +6,8 @@ const ActivityForm = (props) => {
 
 
     const { activities, setActivities } = props;
-    const [ activityName, setActivityName ] = useState('');
-    const [ activityDescription, setActivityDescription ] = useState('');
+    const [ activityName, setActivityName ] = useState("");
+    const [ activityDescription, setActivityDescription ] = useState("");
 
     let newActivity = {
         name: activityName,

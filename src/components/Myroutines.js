@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { getRoutines } from "../api";
+import { getActivities, getRoutines, getRoutinesByUser } from "../api";
 import { Link } from 'react-router-dom';
 
 
 const MyRoutinesList = (props) => {
-    const { loggedInUsername, routines, setRoutines } = props;
+    const { setRoutines, setActivities } = props;
     const [myRoutines, setMyRoutines] = useState([]);
 
 
     useEffect(async () => {
+        const activities = await getActivities();
+        setActivities(activities);
         const routines = await getRoutines();
         setRoutines(routines);
-        const myRoutines = routines.filter(routine => routine.creatorName === loggedInUsername);
+        const myRoutines = await getRoutinesByUser();
         setMyRoutines(myRoutines);
     }, [])
-
 
 
     
@@ -33,6 +34,7 @@ const MyRoutinesList = (props) => {
                         <Link to={`/addActivity/${routine.id}`}>
                             <button id='addActivityButton'>Add Activity</button>
                         </Link>
+                        
 
                         <h3 id="routineName">{`Routine: ${routine.name}`}</h3>
 
@@ -42,18 +44,24 @@ const MyRoutinesList = (props) => {
 
                         {routine.activities.map(activity =>
                             <div className='routine_activities' key={activity.id}>
+                                <Link to={`/editActivity/${routine.id}/${activity.id}`}>
+                                    <button id='editActivityButton'>Edit Activity</button>
+                                </Link>
                                 <p>{`Name: ${activity.name}`}</p>
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>
-                                <p>{`Count: ${activity.count}`}</p>
+                                <p>{`Count: ${activity.count}`}</p>                                
                             </div>
+                            
 
                         )}
 
                     </div>
+                    
                 )}
             </div>
         </div>
+
 
 
 

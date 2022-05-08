@@ -1,15 +1,22 @@
 import React, { useEffect } from 'react';
 import { getRoutines } from "../api";
-import { Link } from 'react-router-dom';
+import { getActivities } from "../api";
 
 
 const RoutinesList = (props) => {
-    const { isLoggedIn, routines, setRoutines } = props;
+    const { routines, setRoutines, setActivities } = props;
 
     useEffect(async () => {
         const routines = await getRoutines();
         setRoutines(routines);
     }, [])
+    
+    async function handleDeleteActivity(id) {
+        const activities = await getActivities();
+        const newActivity = activities.filter(activity => activity.id !== id);
+        setActivities(newActivity);
+    }
+
 
     return (
         <div id="routinesPage">
@@ -27,6 +34,8 @@ const RoutinesList = (props) => {
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>
                                 <p>{`Count: ${activity.count}`}</p>
+                                <button type='button' className='deletebtn'
+                                onClick={() => handleDeleteActivity(activity.id)}>Remove Activity</button>
                             </div>
 
                         )}
