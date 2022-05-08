@@ -62,7 +62,7 @@ useEffect(() => {
                 </Route>
 
                 <Route path="/routines">
-                    <RoutinesList isLoggedIn={isLoggedIn} routines={routines} setRoutines={setRoutines} />
+                    <RoutinesList isLoggedIn={isLoggedIn} routines={routines} setRoutines={setRoutines} setActivities={setActivities} />
                 </Route>
 
                 <Route path="/activities">

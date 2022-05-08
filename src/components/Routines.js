@@ -14,7 +14,6 @@ const RoutinesList = (props) => {
     
     async function handleDeleteActivity(id) {
         const activities = await getActivities();
-        handleDeleteActivity(id);
         const newActivity = activities.filter(activity => activity.id !== id);
         setActivities(newActivity);
     }
