@@ -37,6 +37,7 @@ const EditActivity = (props) => {
                     onChange={(event) => { setDuration(event.target.value) }}
                 />
                 <br />
+                <br />
                 <label htmlFor='activityCount'>Count: </label>
                 <input
                     type='number'
