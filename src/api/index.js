@@ -55,7 +55,7 @@ export const testAuthentication = async (token) => {
         })
         .catch(console.error);
 
-        return response;
+    return response;
 }
 
 
@@ -77,8 +77,27 @@ export const getRoutines = async () => {
     return response
 };
 
+export const getRoutinesByUser = async () => {
+    const user = await testAuthentication(localStorage.getItem('fitness_tracker_JWT'));
+    const username = user.username;
+    const url = `${baseURL}/users/${username}/routines`;
+    const response = await fetch(url, {
+        method: "GET",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        }
+    })
+        .then(response => response.json())
+        .then(result => {
+            return result;
+        })
+        .catch(console.error);
+    return response;
+}
 
-export const createNewRoutine = async(newRoutine) => {
+
+export const createNewRoutine = async (newRoutine) => {
 
     const url = `${baseURL}/routines`;
     const response = await fetch(url, {
@@ -91,7 +110,7 @@ export const createNewRoutine = async(newRoutine) => {
     })
     const json = await response.json();
     console.log(json)
-    if(json.error) {
+    if (json.error) {
         alert(`${json.error}`)
     } else {
         alert(`Routine ${newRoutine.name} has been created`)
@@ -100,8 +119,8 @@ export const createNewRoutine = async(newRoutine) => {
 }
 
 
-export const editRoutine = async(routineId, routineToEdit) => {
-    
+export const editRoutine = async (routineId, routineToEdit) => {
+
     const url = `${baseURL}/routines/${routineId}`;
     const response = await fetch(url, {
         method: "PATCH",
@@ -112,7 +131,7 @@ export const editRoutine = async(routineId, routineToEdit) => {
         body: JSON.stringify(routineToEdit)
     })
     const json = await response.json();
-    if(json.error) {
+    if (json.error) {
         alert(`${json.error}`)
     } else {
         alert(`Routine has been updated`)
@@ -121,7 +140,7 @@ export const editRoutine = async(routineId, routineToEdit) => {
 
 }
 
-export const deleteRoutine = async(routineId) => {
+export const deleteRoutine = async (routineId) => {
     const url = `${baseURL}/routines/${routineId}`;
     const response = await fetch(url, {
         method: "DELETE",
@@ -131,7 +150,7 @@ export const deleteRoutine = async(routineId) => {
         }
     })
     const json = await response.json();
-    if(json.success) {
+    if (json.success) {
         alert('Routine has been deleted')
         return json;
     } else {
@@ -161,7 +180,7 @@ export const getActivities = async () => {
 export const getRoutinesByActivity = async (activityId) => {
     const url = `${baseURL}/activities/${activityId}/routines`;
     const response = await fetch(url, {
-        method:"GET",
+        method: "GET",
         headers: {
             'Content-Type': 'application/json'
         }
@@ -184,8 +203,7 @@ export const createNewActivity = async (newActivity) => {
         body: JSON.stringify(newActivity)
     })
     const json = await response.json();
-    console.log(json)
-    if(json.error) {
+    if (json.error) {
         alert(`${json.error}`)
     } else {
         alert(`Activity ${newActivity.name} has been created`)
@@ -204,12 +222,30 @@ export const addActivityToRoutine = async (routineId, activityToAdd) => {
         body: JSON.stringify(activityToAdd)
     })
     const json = await response.json();
-    console.log(json)
-    if(json.id) {
+    if (json.id) {
         alert(`Activity has been added`)
         return json;
     } else {
         alert(json.error)
+        return json;
+    }
+}
+
+export const editRoutineActivity = async (routineActivityId, routineActivityToEdit) => {
+    const url = `${baseURL}/routine_activities/${routineActivityId}`;
+    const response = await fetch(url, {
+        method: "PATCH",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        },
+        body: JSON.stringify(routineActivityToEdit)
+    })
+    const json = await response.json();
+    if (json.error) {
+        alert(`${json.error}`)
+    } else {
+        alert(`Routine activity has been updated`)
         return json;
     }
 

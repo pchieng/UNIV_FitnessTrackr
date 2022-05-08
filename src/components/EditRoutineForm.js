@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { editRoutine, deleteRoutine } from '../api';
 import { Link } from 'react-router-dom';
 
 const EditRoutine = (props) => {
     const { routines } = props;
 
-    const location = useLocation();
-    const routineId = parseInt(location.pathname.slice(13));
+    let {routineId} = useParams();
+    routineId = parseInt(routineId);
+
     const [routineToEdit] = routines.filter(routine => routine.id === routineId);
     const [routineName, setRoutineName] = useState(routineToEdit.name);
     const [routineGoal, setRoutineGoal] = useState(routineToEdit.goal);
