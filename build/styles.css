@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+}
+
+#navBar {
+    background-color: #11475f;
+    color:aliceblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 5px;
+}
+
+#navBar a {
+    color: inherit;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.navText {
+    justify-content: space-around;
+    padding-right: 20px;
+    color: inherit;
+}
+
+.welcomeUser {
+    font-size: 1.2rem;
+    margin-right: 30px;
+}
+
+#routinesList, #activitiesList, #editRoutinePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+    width: 70%;
+}
+
+.routines, .activities, #routineToEdit {
+    padding: 10px 5px;
+    width: 60%;
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px gray;
+    margin: 20px 0;
+}
+
+.routine_activities {
+    padding: 10px 5px;
+    width: 80%;
+    border-style: solid;
+    margin: 5px 10%;
+}
+
+#activitiesPageTitle {
+    text-align: center;
+}
+
+#activitiesPage, #routinesPage, #myRoutinesPage, #editRoutinePage, #addActivityPage, #editActivityPage {
+    text-align: center;
+}
+
+#editButton {
+    margin-left: 10px;
+}
