@@ -7,6 +7,7 @@ import Home from './Home';
 import RoutinesList from './Routines';
 import MyRoutinesList from './MyRoutines';
 import EditRoutine from './EditRoutineForm';
+import EditActivity from './EditActivityForm';
 import RoutineForm from './RoutineForm';
 import ActivitiesList from './Activities';
 import ActivityForm from './ActivityForm';
@@ -83,6 +84,10 @@ useEffect(() => {
 
                 <Route path="/addActivity">
                     <AddActivity activities={activities} setActivities={setActivities}/>
+                </Route>
+
+                <Route path="/editActivity">
+                    <EditActivity activities={activities} setActivities={setActivities}/>
                 </Route>
                 
 

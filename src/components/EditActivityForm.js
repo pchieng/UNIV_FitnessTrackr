@@ -1,74 +1,64 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { editRoutine, deleteRoutine } from '../api';
+import { editActivity, deleteActivity } from '../api';
 import { Link } from 'react-router-dom';
 
 const EditActivity = (props) => {
-    const { routines } = props;
+    const { activities } = props;
 
     const location = useLocation();
-    const routineId = parseInt(location.pathname.slice(13));
-    const [routineToEdit] = routines.filter(routine => routine.id === routineId);
-    const [routineName, setRoutineName] = useState(routineToEdit.name);
-    const [routineGoal, setRoutineGoal] = useState(routineToEdit.goal);
-    const [routineIsPublic, setRoutineIsPublic] = useState(routineToEdit.isPublic);
+    const activitiyId = parseInt(location.pathname.slice(13));
+    const [activityToEdit] = activities.filter(activity => activity.id === activitiyId);
+    const [activityName, setActivityName] = useState(activityToEdit.name);
+    const [activityDescription, setActivityDescription] = useState(routineToEdit.goal);
 
 
 
-    const newRoutine = {
-        name: routineName,
-        goal: routineGoal,
-        isPublic: routineIsPublic
+    const newActivity = {
+        name: activityName,
+        description: activityDescription,
     }
 
     return (
 
-        <div id="editRoutinePage">
-            <h1 id="editRoutinePageTitle">EDIT ROUTINE</h1>
+        <div id="editActivityPage">
+            <h1 id="editActivityPageTitle">EDIT ACTIVITY</h1>
             <form>
-                <label htmlFor='routineName'>Routine Name: </label>
+                <label htmlFor='activityName'>Activity Name: </label>
                 <input
                     type='text'
-                    id='routineName'
-                    name='routineName'
-                    placeholder={routineToEdit.name}
-                    onChange={(event) => setRoutineName(event.target.value)}
+                    id='activityName'
+                    name='activityName'
+                    placeholder={activityToEdit.name}
+                    onChange={(event) => setActivityName(event.target.value)}
                 />
                 <br />
-                <label htmlFor='routineGoal'>Routine Goal: </label>
+                <label htmlFor='activityDescription'>Activity Description: </label>
                 <input
                     type='text'
-                    id='routineGoal'
-                    name='routineGoal'
-                    placeholder={routineToEdit.goal}
-                    onChange={(event) => setRoutineGoal(event.target.value)}
+                    id='activityDescription'
+                    name='activityDescription'
+                    placeholder={activityToEdit.goal}
+                    onChange={(event) => setActivityDescription(event.target.value)}
                 />
                 <br />
-                <label htmlFor='routineIsPublic'>Private: </label>
-                <input
-                    type='checkbox'
-                    id='routineIsPublic'
-                    name='routineIsPublic'
-                    value={routineToEdit.isPublic}
-                    onChange={(event) => setRoutineIsPublic(event.target.value)}
-                />
             </form>
             <br/>
             <span>
             <button
                 onClick={async (event) => {
                     event.preventDefault();
-                    const deletedRoutine = await deleteRoutine(routineId);
-                    console.log(deletedRoutine);
+                    const deletedActivity = await deleteActivity(activityId);
+                    console.log(deletedActivity);
                 }}
             >
-                Delete Routine
+                Delete Activity
             </button>
             <button
                 onClick={async (event) => {
                     event.preventDefault();
-                    const updatedRoutine = await editRoutine(routineId, newRoutine);
-                    console.log(updatedRoutine)
+                    const updatedActivity = await editActivity(activitiyId, newActivity);
+                    console.log(updatedActivity)
                 }}
                 >
                 Submit Changes
@@ -79,13 +69,13 @@ const EditActivity = (props) => {
             <button>Back</button>
             </Link>
 
-            <div id="routineToEdit">
-                <h3 id="routineName">{`Routine: ${routineToEdit.name}`}</h3>
-                <p>{`Goal: ${routineToEdit.goal}`}</p>
-                <p>{`Creator: ${routineToEdit.creatorName}`}</p>
+            <div id="activityToEdit">
+                <h3 id="activityName">{`Activity: ${activityToEdit.name}`}</h3>
+                <p>{`Description: ${activityToEdit.description}`}</p>
+                <p>{`Creator: ${activityToEdit.creatorName}`}</p>
                 <h4>Activities:</h4>
-                {routineToEdit.activities ?
-                    routineToEdit.activities.map(activity =>
+                {activityToEdit.activities ?
+                    activityToEdit.activities.map(activity =>
                         <div className='routine_activities' key={activity.id}>
                             <p>{`Name: ${activity.name}`}</p>
                             <p>{`Description: ${activity.description}`}</p>
