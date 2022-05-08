@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import RegisterUser from './RegisterUser';
 import Login from './Login';
@@ -11,7 +11,7 @@ import RoutineForm from './RoutineForm';
 import ActivitiesList from './Activities';
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivityForm';
-import { getRoutines, getActivities, testAuthentication } from '../api';
+import { testAuthentication } from '../api';
 import EditActivity from './EditActivityForm';
 
 
@@ -59,11 +59,11 @@ useEffect(() => {
                 </Route>
 
                 <Route path="/myRoutines">
-                    <MyRoutinesList loggedInUsername={loggedInUsername} routines={routines} setRoutines={setRoutines} setActivities={setActivities}/>
+                    <MyRoutinesList setRoutines={setRoutines} setActivities={setActivities}/>
                 </Route>
 
                 <Route path="/routines">
-                    <RoutinesList isLoggedIn={isLoggedIn} routines={routines} setRoutines={setRoutines} setActivities={setActivities} />
+                    <RoutinesList routines={routines} setRoutines={setRoutines} setActivities={setActivities} />
                 </Route>
 
                 <Route path="/activities">
@@ -87,7 +87,7 @@ useEffect(() => {
                 </Route>
 
                 <Route path="/editActivity/:routineId/:activityId">
-                    <EditActivity activities={activities} setActivities={setActivities} routines={routines} setRoutines={setRoutines}/>
+                    <EditActivity routines={routines} />
                 </Route>
                 
 

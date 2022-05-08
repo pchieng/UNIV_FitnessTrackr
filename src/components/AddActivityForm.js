@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getActivities, addActivityToRoutine } from '../api';
+import React, { useState } from 'react';
+import { addActivityToRoutine } from '../api';
 import { Link, useParams } from 'react-router-dom';
 
 

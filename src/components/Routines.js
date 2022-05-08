@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { getRoutines } from "../api";
 import { getActivities } from "../api";
-import { Link } from 'react-router-dom';
 
 
 const RoutinesList = (props) => {
-    const { activities, isLoggedIn, routines, setRoutines, setActivities } = props;
+    const { routines, setRoutines, setActivities } = props;
 
     useEffect(async () => {
         const routines = await getRoutines();

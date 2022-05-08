@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const MyRoutinesList = (props) => {
-    const { loggedInUsername, routines, setRoutines, setActivities } = props;
+    const { setRoutines, setActivities } = props;
     const [myRoutines, setMyRoutines] = useState([]);
 
 

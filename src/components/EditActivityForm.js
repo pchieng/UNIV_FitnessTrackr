@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { editRoutineActivity, deleteRoutineActivity} from '../api';
 
 
 
 const EditActivity = (props) => {
-    const { activities, setActivities, routines, setRoutines } = props;
+    const { routines } = props;
     let { routineId, activityId } = useParams();
     routineId = parseInt(routineId);
     activityId = parseInt(activityId);
