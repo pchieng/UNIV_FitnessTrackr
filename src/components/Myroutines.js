@@ -15,10 +15,9 @@ const MyRoutinesList = (props) => {
         setMyRoutines(myRoutines);
     }, [])
 
-console.log(myRoutines);
 
 
-
+    
     return (
         <div id="myRoutinesPage">
             <h1 id="myRoutinesPageTitle">MY ROUTINES</h1>
@@ -28,10 +27,19 @@ console.log(myRoutines);
             <div id='routinesList'>
                 {myRoutines.map(routine =>
                     <div className='routines' key={routine.id}>
-                        <h3>{`Routine: ${routine.name}`}</h3>
+                        <Link to={`/editRoutine/${routine.id}`}>
+                            <button id='editButton'>Edit Routine</button>
+                        </Link>
+                        <Link to={`/addActivity/${routine.id}`}>
+                            <button id='addActivityButton'>Add Activity</button>
+                        </Link>
+
+                        <h3 id="routineName">{`Routine: ${routine.name}`}</h3>
+
                         <p>{`Goal: ${routine.goal}`}</p>
                         <p>{`Creator: ${routine.creatorName}`}</p>
                         <h4>Activities:</h4>
+
                         {routine.activities.map(activity =>
                             <div className='routine_activities' key={activity.id}>
                                 <p>{`Name: ${activity.name}`}</p>
