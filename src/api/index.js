@@ -1,4 +1,4 @@
-export const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api';
+const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 
 export const registerNewUser = async (userObject) => {
@@ -249,9 +249,28 @@ export const editRoutineActivity = async (routineActivityId, routineActivityToEd
         alert(`Routine activity has been updated`)
         return json;
     }
-
-
 }
+
+export const  deleteRoutineActivity = async (routineActivityId) => {
+    const url = `${baseURL}/routine_activities/${routineActivityId}`;
+    const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('fitness_tracker_JWT')}`
+        }
+    })
+    const json = await response.json();
+    if (json.error) {
+        alert(`${json.error}`)
+    } else {
+        alert(`Activity has been removed from this routine`)
+        return json;
+    }
+}
+
+
+
 
 export const editActivity = async(activityId, activityToEdit) => {
     

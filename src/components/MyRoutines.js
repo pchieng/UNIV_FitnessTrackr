@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const MyRoutinesList = (props) => {
-    const { loggedInUsername, routines, setRoutines, setActivities } = props;
+    const { setRoutines, setActivities } = props;
     const [myRoutines, setMyRoutines] = useState([]);
 
 
@@ -16,15 +16,6 @@ const MyRoutinesList = (props) => {
         const myRoutines = await getRoutinesByUser();
         setMyRoutines(myRoutines);
     }, [])
-
-    async function handleDeleteActivity(id) {
-        const activities = await getActivities();
-        setActivities(activities);
-        const newActivity = activities.filter(activity => activity.id !== id);
-    }
-
-console.log(myRoutines);
-
 
 
     
@@ -56,17 +47,10 @@ console.log(myRoutines);
                                 <Link to={`/editActivity/${routine.id}/${activity.id}`}>
                                     <button id='editActivityButton'>Edit Activity</button>
                                 </Link>
-                                <button id='removeActivityButton'>Remove Activity</button>
                                 <p>{`Name: ${activity.name}`}</p>
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>
-                                <p>{`Count: ${activity.count}`}</p>
-                                <Link to={`editActivities/${activity.id}`}>
-                                     <button id='editActivityButton'>Edit Activity</button>
-                                </Link>
-                                <button type='button' className='deletebtn'
-                                    onClick={() => handleDeleteActivity(activity.id)}>Remove Activity</button>
-                                
+                                <p>{`Count: ${activity.count}`}</p>                                
                             </div>
                             
 

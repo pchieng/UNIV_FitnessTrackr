@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { editRoutineActivity } from '../api';
+import { editRoutineActivity, deleteRoutineActivity} from '../api';
 
 
 
 const EditActivity = (props) => {
-    const { activities, setActivities, routines, setRoutines } = props;
+    const { routines } = props;
     let { routineId, activityId } = useParams();
     routineId = parseInt(routineId);
     activityId = parseInt(activityId);
@@ -47,15 +47,26 @@ const EditActivity = (props) => {
                 />
                 <br />
                 <br />
-                <Link to='/myRoutines'>
-                    <button>Back</button>
-                </Link>
+                         
+                <button 
+                    id='removeActivityButton'
+                    onClick={(event) => {
+                        event.preventDefault();
+                        deleteRoutineActivity(routineActivityIdToEdit);
+                    }}
+                    
+                    >Remove Activity</button>
                     <button
-                        onClick={(event => {
+                        onClick={(event) => {
                             event.preventDefault();
                             editRoutineActivity(routineActivityIdToEdit, newRoutineActivityInfo);
-                        })}
+                        }}
                     > Submit </button>
+                    <br/>
+                    <br/>
+                    <Link to='/myRoutines'>
+                    <button>Back</button>
+                </Link>       
             </form>
 
 
