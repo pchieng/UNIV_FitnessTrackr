@@ -86,7 +86,7 @@ useEffect(() => {
                     <AddActivity activities={activities} setActivities={setActivities}/>
                 </Route>
 
-                <Route path="/editActivity">
+                <Route path="/editActivities">
                     <EditActivity activities={activities} setActivities={setActivities}/>
                 </Route>
                 

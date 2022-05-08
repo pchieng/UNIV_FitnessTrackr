@@ -10,7 +10,6 @@ const ActivitiesList = (props) => {
     console.log('test',isLoggedIn)
 
     async function handleDeleteActivity(id) {
-        handleDeleteActivity(id);
         const newActivity = activities.filter(activity => activity.id !== id);
         setActivities(newActivity);
     }
