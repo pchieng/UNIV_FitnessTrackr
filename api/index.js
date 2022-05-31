@@ -156,3 +156,5 @@ export const createNewActivity = async (newActivity) => {
         return json;
     }
 }
+
+// export const deleteRoutineActivity = async ()

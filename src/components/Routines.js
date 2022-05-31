@@ -10,14 +10,6 @@ const RoutinesList = (props) => {
         const routines = await getRoutines();
         setRoutines(routines);
     }, [])
-    
-    async function handleDeleteActivity(id) {
-        const activities = await getActivities();
-        const newActivity = activities.filter(activity => activity.id !== id);
-        setActivities(newActivity);
-    }
-
-    console.log(routines)
 
 
     return (
@@ -36,8 +28,6 @@ const RoutinesList = (props) => {
                                 <p>{`Description: ${activity.description}`}</p>
                                 <p>{`Duration: ${activity.duration}`}</p>
                                 <p>{`Count: ${activity.count}`}</p>
-                                <button type='button' className='deletebtn'
-                                onClick={() => handleDeleteActivity(activity.id)}>Remove Activity</button>
                             </div>
 
                         )}

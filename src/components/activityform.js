@@ -16,8 +16,8 @@ const ActivityForm = (props) => {
 
 
     return (
-        <>
-            <h1 className="newActivity">Create a New Activity</h1>
+        <div id="activityForm">
+            <h1 className="newActivity">CREATE NEW ACTIVITY</h1>
             <form id='activityForm' className='newActivity'>
                 <label htmlFor='newActivityName'>Activity Name: </label>
                 <input
@@ -36,6 +36,10 @@ const ActivityForm = (props) => {
                     onChange={(event) => { setActivityDescription(event.target.value) }}
                 />
                 <br />
+                <br />
+                <Link to='activities'>
+                    <button>Back</button>
+                </Link>
                 <Link to='/activities'>
                     <button
                         onClick={async (event) => {
@@ -52,7 +56,7 @@ const ActivityForm = (props) => {
 
 
 
-        </>
+        </div>
 
 
 

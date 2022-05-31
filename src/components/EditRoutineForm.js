@@ -69,7 +69,6 @@ const EditRoutine = (props) => {
                 onClick={async (event) => {
                     event.preventDefault();
                     const updatedRoutine = await editRoutine(routineId, newRoutine);
-                    console.log(updatedRoutine)
                 }}
                 >
                 Submit Changes

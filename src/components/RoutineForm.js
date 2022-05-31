@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createNewRoutine } from '../api';
+import { Link } from 'react-router-dom';
 
 const RoutineForm = (props) => {
 
@@ -38,6 +39,10 @@ const RoutineForm = (props) => {
                     onChange={(event) => { setRoutineGoal(event.target.value) }}
                 />
                 <br />
+                <br />
+                <Link to='/myRoutines'>
+                <button>Back</button>
+            </Link>
                 <button
                     onClick={async (event) => {
                         event.preventDefault();

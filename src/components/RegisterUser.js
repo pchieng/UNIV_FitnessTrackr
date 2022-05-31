@@ -31,6 +31,7 @@ const RegisterUser = () => {
             setUser("");
             setPassword("");
             document.querySelector('.confirm_password').value='';
+            window.location.reload(false);
     };
 
     const handleUserChange = (event) => {
