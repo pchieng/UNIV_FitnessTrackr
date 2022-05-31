@@ -18,9 +18,9 @@ const RoutineForm = (props) => {
 
     return (
 
-        <>
-            <h1 id="newRoutine" >Create a New Routine</h1>
-            <form id="routineForm" className="newRoutine" >
+        <div id="routineForm" className="newRoutine">
+            <h1 id="newRoutine" >CREATE NEW ROUTINE</h1>
+            <form  >
                 <label htmlFor="newRoutineName">Routine Name: </label>
                 <input
                     type="text"
@@ -52,7 +52,7 @@ const RoutineForm = (props) => {
 
 
 
-        </>
+        </div>
 
 
 

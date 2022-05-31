@@ -58,7 +58,7 @@ body {
     text-align: center;
 }
 
-#home, #registerPage, #loginPage, #activitiesPage, #routinesPage, #myRoutinesPage, #editRoutinePage, #addActivityPage, #editActivityPage {
+#home, #registerPage, #loginPage, #activitiesPage, #routinesPage, #routineForm, #myRoutinesPage, #editRoutinePage, #addActivityPage, #editActivityPage {
     text-align: center;
     margin-top: 50px;
 }

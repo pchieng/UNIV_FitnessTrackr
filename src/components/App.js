@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './NavBar';
 import RegisterUser from './RegisterUser';
 import Login from './Login';
 import Home from './Home';
 import RoutinesList from './Routines';
-import MyRoutinesList from './MyRoutines';
+import MyRoutinesList from './Myroutines';
 import EditRoutine from './EditRoutineForm';
 import RoutineForm from './RoutineForm';
 import ActivitiesList from './Activities';
-import ActivityForm from './ActivityForm';
+import ActivityForm from './activityform';
 import AddActivity from './AddActivityForm';
 import { testAuthentication } from '../api';
 import EditActivity from './EditActivityForm';
