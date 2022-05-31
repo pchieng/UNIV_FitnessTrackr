@@ -58,8 +58,9 @@ body {
     text-align: center;
 }
 
-#activitiesPage, #routinesPage, #myRoutinesPage, #editRoutinePage, #addActivityPage, #editActivityPage {
+#home, #registerPage, #loginPage, #activitiesPage, #routinesPage, #myRoutinesPage, #editRoutinePage, #addActivityPage, #editActivityPage {
     text-align: center;
+    margin-top: 50px;
 }
 
 #editButton {

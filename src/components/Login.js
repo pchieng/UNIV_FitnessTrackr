@@ -5,20 +5,25 @@ import { loginUser } from "../api";
 const Login = (props) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const {setIsLoggedIn} = props;
-  
+  const { setIsLoggedIn } = props;
+
 
   const handleLogin = (event) => {
-    console.log("Logging in...");
+    event.preventDefault();
     const registerInfo = {
       user: user,
-      password: password,
+      password: password
     };
 
-    loginUser(registerInfo);
+    if (user === '' || password === '') {
+      alert('Please enter username or password');
+      return;
+    }
 
+    const res = loginUser(registerInfo);
     setUser("");
     setPassword("");
+    window.location.reload(false);
   };
 
   const handleUserChange = (event) => {
@@ -28,44 +33,37 @@ const Login = (props) => {
     setPassword(event.target.value);
   };
 
-  const handleLogOut = () => {
-    localStorage.removeItem("fitness_tracker_JWT");
-    setIsLoggedIn(false);
-  };
-
   useEffect(() => {
     setIsLoggedIn(!!localStorage.getItem("fitness_tracker_JWT"));
   }, []);
 
 
   return (
-    <>
-      <div id="login" className="loginStyle">
-        <form>
-          <label>Username</label>
-          <input
-            type="text"
-            value={user}
-            placeholder="Enter Username"
-            onChange={handleUserChange}
-          ></input>
-
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            placeholder="Enter Password"
-            onChange={handlePasswordChange}
-          ></input>
-          <button type="submit" onClick={handleLogin}>
-            Login
-          </button>
-          <button type="submit" onClick={handleLogOut}>
-            Log Out
-          </button>
-        </form>
-      </div>
-    </>
+    <div id='loginPage'>
+      <h1>LOG IN</h1>
+      <form>
+        <label>Username: </label>
+        <input
+          type="text"
+          value={user}
+          placeholder="Enter Username"
+          onChange={handleUserChange}
+        ></input>
+        <br />
+        <label>Password: </label>
+        <input
+          type="password"
+          value={password}
+          placeholder="Enter Password"
+          onChange={handlePasswordChange}
+        ></input>
+        <br />
+        <br />
+        <button type="submit" onClick={handleLogin}>
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 

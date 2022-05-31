@@ -17,6 +17,8 @@ const RoutinesList = (props) => {
         setActivities(newActivity);
     }
 
+    console.log(routines)
+
 
     return (
         <div id="routinesPage">

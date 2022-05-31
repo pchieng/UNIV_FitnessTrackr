@@ -2,7 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBar = (props) => {
-    const { isLoggedIn, loggedInUsername } = props;
+    const { isLoggedIn, setIsLoggedIn, loggedInUsername } = props;
+
+    const handleLogOut = () => {
+        localStorage.removeItem("fitness_tracker_JWT");
+        setIsLoggedIn(false);
+    };
 
     return (
         <div id="navBar">
@@ -34,6 +39,17 @@ const NavBar = (props) => {
                 <Link to="/routines" className='navText'>ROUTINES</Link>
 
                 <Link to="/activities" className='navText'>ACTIVITIES</Link>
+
+                {isLoggedIn ?
+                    <Link to="/" className='navText' onClick={handleLogOut}>
+                        LOG OUT
+                    </Link>
+                    :
+                    <Link to="/login" className='navText' >
+                        LOG IN
+                    </Link>
+                }
+
             </ div>
 
 

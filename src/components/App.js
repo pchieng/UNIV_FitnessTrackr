@@ -40,12 +40,8 @@ useEffect(() => {
         <>
 
             <Router>
-                <NavBar isLoggedIn={isLoggedIn} loggedInUsername={loggedInUsername}/>
+                <NavBar isLoggedIn={isLoggedIn} loggedInUsername={loggedInUsername} setIsLoggedIn={setIsLoggedIn}/>
 
-                <div>
-                    <Link to="/RegisterUser">Register </Link>
-                    <Link to="/Login">Login    </Link>
-                </div>
                 <Route exact path="/">
                     <Home />
                 </Route>

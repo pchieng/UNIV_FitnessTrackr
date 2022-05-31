@@ -7,8 +7,6 @@ const RegisterUser = () => {
 
     const handleRegisterClick = async (event) => {
         event.preventDefault();
-
-        console.log("Creating a new user...");
         const registerInfo = {
             user: user,
             password: password
@@ -44,22 +42,24 @@ const RegisterUser = () => {
  
 
     return (
-      <>
-        <div>
-            <h1>Register New User</h1>
-        </div>
-
+      <div id='registerPage'>
+            <h1>REGISTER NEW USER</h1>
         <form>
-            <input type="text" placeholder="User Name" value={user} onChange={handleUserChange}  />
+            <label for="username">Username: </label>
+            <input type="text" id="username" placeholder="Username" value={user} onChange={handleUserChange}  />
+            <br/>
+            <label for="password">Password: </label>
             <input type="password" className="password" placeholder="Password" id="password" value={password}
              onChange={handlePasswordChange}/>
-
+            <br/>
+            <label for="confirm-password">Confirm Password: </label>
             <input type="password" className="confirm_password" placeholder="Re-Enter Password" id="confirm-password"
             />
-             
-            <button onClick={handleRegisterClick}>Register!</button>  
+             <br/>
+             <br/>
+             <button onClick={handleRegisterClick}>Register</button>  
         </form>
-      </>    
+      </div>    
     );
 };
 
